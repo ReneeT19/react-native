@@ -8,6 +8,7 @@ import { Agenda as UdaciFitnessCalendar } from "react-native-calendars";
 import MetricCard from './MetricCard'
 
 class History extends Component {
+
   componentDidMount () {
     const { dispatch } = this.props
 
@@ -21,7 +22,7 @@ class History extends Component {
           }))
         }
       })
-      .then(() => this.setState(() => ({ready: true})))
+      // .then(() => this.setState(() => ({ready: true})))
   }
   renderItem = ({ today, ...metrics }, formattedDate, key) => (
     <View style={styles.item}>
@@ -40,6 +41,7 @@ class History extends Component {
       )}
     </View>
   )
+  
   renderEmptyDate(formattedDate) {
     return (
       <View style={styles.item}>
@@ -61,11 +63,12 @@ class History extends Component {
 }
 
 const styles = StyleSheet.create({
+
   item: {
-    backgroundColor: "lavender",
+    backgroundColor: "lavendar",
     borderRadius: Platform.OS === 'ios' ? 16 : 2,
-    padding: 8,
-    marginLeft: 8,
+    padding: 10,
+    marginLeft: 7,
     marginRight: 25,
     marginTop: 20,
     justifyContent: 'center',
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
     },
   },
   noDataText: {
-    fontSize: 16,
+    fontSize: 18,
     paddingTop: 15,
     paddingBottom: 15,
   }
