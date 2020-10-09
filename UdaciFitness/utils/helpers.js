@@ -1,11 +1,30 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import {
   FontAwesome,
   MaterialIcons,
   MaterialCommunityIcons
 } from "@expo/vector-icons";
-import { orange } from "./colors";
+import { orange, red, blue, lightPurp, pink, white, lemon, lightBlue, peach, gray, lavender, lavenderBlush } from "./colors";
+
+export function getDailyReminderValue () {
+  return {
+    today: "👋 Don't forget to log your data today!"
+  }
+}
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    padding: 5,
+    borderRadius: 8,
+    width: 50,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 20
+  },
+})
+
 
 export function getMetricMetaInfo(metric) {
   const info = {
@@ -17,8 +36,8 @@ export function getMetricMetaInfo(metric) {
       type: "steppers",
       getIcon() {
         return (
-          <View>
-            <MaterialIcons name="directions-run" color={"orange"} size={35} />
+          <View style={[styles.iconContainer, {backgroundColor: lavender}]}>
+            <MaterialIcons name="directions-run" color={gray} size={35} />
           </View>
         );
       }
@@ -31,8 +50,8 @@ export function getMetricMetaInfo(metric) {
       type: "steppers",
       getIcon() {
         return (
-          <View>
-            <MaterialCommunityIcons name="bike" color={"orange"} size={32} />
+          <View style={[styles.iconContainer, {backgroundColor: lemon}]}>
+            <MaterialCommunityIcons name="bike" color={gray} size={32} />
           </View>
         );
       }
@@ -45,8 +64,8 @@ export function getMetricMetaInfo(metric) {
       type: "steppers",
       getIcon() {
         return (
-          <View>
-            <MaterialCommunityIcons name="swim" color={"orange"} size={35} />
+          <View style={[styles.iconContainer, {backgroundColor: lavenderBlush}]}>
+            <MaterialCommunityIcons name="swim" color={gray} size={35} />
           </View>
         );
       }
@@ -59,8 +78,8 @@ export function getMetricMetaInfo(metric) {
       type: "slider",
       getIcon() {
         return (
-          <View>
-            <FontAwesome name="bed" color={"orange"} size={30} />
+          <View style={[styles.iconContainer, {backgroundColor: lightBlue}]}>
+            <FontAwesome name="bed" color={gray} size={30} />
           </View>
         );
       }
@@ -73,8 +92,8 @@ export function getMetricMetaInfo(metric) {
       type: "slider",
       getIcon() {
         return (
-          <View>
-            <MaterialCommunityIcons name="food" color={"orange"} size={35} />
+          <View style={[styles.iconContainer, {backgroundColor: peach}]}>
+            <MaterialCommunityIcons name="food" color={gray} size={35} />
           </View>
         );
       }
