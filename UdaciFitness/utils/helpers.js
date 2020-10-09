@@ -8,9 +8,9 @@ import {
 import { orange, red, blue, lightPurp, pink, white, lemon, lightBlue, peach, gray, lavender, lavenderBlush } from "./colors";
 
 export function getDailyReminderValue () {
-  return {
+  return [{
     today: "👋 Don't forget to log your data today!"
-  }
+  },]
 }
 
 const styles = StyleSheet.create({
