@@ -5,7 +5,7 @@ import { receiveEntries, addEntry } from '../actions'
 import { timeToString, getDailyReminderValue } from '../utils/helpers'
 import { fetchCalendarResults } from '../utils/api'
 import { Agenda as UdaciFitnessCalendar } from "react-native-calendars";
-import {white} from '../utils/colors'
+import MetricCard from './MetricCard'
 
 class History extends Component {
   componentDidMount () {
@@ -62,14 +62,14 @@ class History extends Component {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: white,
+    backgroundColor: "lavender",
     borderRadius: Platform.OS === 'ios' ? 16 : 2,
-    padding: 20,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 17,
+    padding: 8,
+    marginLeft: 8,
+    marginRight: 25,
+    marginTop: 20,
     justifyContent: 'center',
-    shadowRadius: 3,
+    shadowRadius: 5,
     shadowOpacity: 0.8,
     shadowColor: 'rgba(0, 0, 0, 0.24)',
     shadowOffset: {
@@ -78,9 +78,9 @@ const styles = StyleSheet.create({
     },
   },
   noDataText: {
-    fontSize: 20,
-    paddingTop: 20,
-    paddingBottom: 20
+    fontSize: 16,
+    paddingTop: 15,
+    paddingBottom: 15,
   }
 })
 
