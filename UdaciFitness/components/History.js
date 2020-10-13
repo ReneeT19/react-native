@@ -65,7 +65,7 @@ class History extends Component {
 const styles = StyleSheet.create({
 
   item: {
-    backgroundColor: "lavendar",
+    backgroundColor: 'lavender',
     borderRadius: Platform.OS === 'ios' ? 16 : 2,
     padding: 10,
     marginLeft: 7,
