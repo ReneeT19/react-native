@@ -32,27 +32,34 @@
 // });
 
 import React from 'react'
-import { View, Platform } from 'react-native'
+import { View, Platform, StatusBar } from 'react-native'
 import AddEntry from './components/AddEntry'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import History from './components/History'
 import { TabNavigator } from 'react-navigation'
-import { purple, white } from './utils/colors'
+import { purple, white, orange } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Constants from 'expo-constants'
+
+function UdaciStatusBar ({backgroundColor, ...props}) {
+  return (
+    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+    </View>
+  )
+}
 
 const RouteConfigs = {
   History:{
     name: "History",
     component: History,
-    options: {tabBarIcon: ({tintColor}) => {
-      return <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
-    }, title: 'History'}
+    options: {tabBarIcon: ({tintColor}) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />, title: 'History'}
   }, 
   AddEntry:{
     component: AddEntry,
@@ -69,7 +76,7 @@ const TabNavigatorConfig = {
     activeTintColor: Platform.OS === "ios" ? purple : white,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === "ios" ? white : purple,
+      backgroundColor: Platform.OS === "ios" ? 'lavender' : purple,
       shadowColor: "rgba(0, 0, 0, 0.24)",
       shadowOffset: {
         width: 0,
@@ -92,6 +99,7 @@ export default class App extends React.Component{
     return(
       <Provider store={store}>
         <NavigationContainer>
+        <UdaciStatusBar backgroundColor={"coral"} barStyle="light-content" />
             <Tab.Navigator {...TabNavigatorConfig}>
                 <Tab.Screen {...RouteConfigs['History']} />
                 <Tab.Screen {...RouteConfigs['AddEntry']} />
