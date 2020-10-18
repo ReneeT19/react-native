@@ -6,9 +6,11 @@ import { timeToString, getDailyReminderValue } from '../utils/helpers'
 import { fetchCalendarResults } from '../utils/api'
 import { Agenda as UdaciFitnessCalendar } from "react-native-calendars";
 import MetricCard from './MetricCard'
+import {AppLoading} from 'expo'
 
 class History extends Component {
-
+  state = {ready: false}
+  
   componentDidMount () {
     const { dispatch } = this.props
 
@@ -22,7 +24,7 @@ class History extends Component {
           }))
         }
       })
-      // .then(() => this.setState(() => ({ready: true})))
+      .then(() => this.setState(() => ({ready: true})))
   }
   renderItem = ({ today, ...metrics }, formattedDate, key) => (
     <View style={styles.item}>
@@ -49,7 +51,12 @@ class History extends Component {
       </View>
     )
   }
+
   render() {
+    if (this.state.ready === false) {
+      return <AppLoading />
+    }
+  
     const { entries } = this.props
 
     return (
@@ -87,12 +94,13 @@ const styles = StyleSheet.create({
   }
 })
 
-function mapStateToProps (entries) {
-  return {
-    entries
+// const mapStateToProps = entries => ({entries})
+// const actions = {receiveEntries, addEntry}
+// export default connect(mapStateToProps, actions)(History)
+function mapStateToProps(entries){
+    
+  return{
+      entries
   }
 }
-
-export default connect(
-  mapStateToProps,
-)(History)
+export default connect(null, mapStateToProps)(History)
