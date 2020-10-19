@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, ActivityIndicator, TouchableOpacity, StyleSheet, Animated } from 'react-native'
 import { Foundation } from '@expo/vector-icons'
-import { purple, white } from '../utils/colors'
+import { purple, white, lavender } from '../utils/colors'
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { calculateDirection } from '../utils/helpers';
@@ -50,7 +50,7 @@ export default class Live extends Component {
   
         if(newDirection !== direction){
           Animated.sequence([
-                    Animated.timing(bounceValue, {duration: 200, toValue: 1.02}),
+                    Animated.timing(bounceValue, {duration: 200, toValue: 1.02, useNativeDriver: false}),
                     Animated.spring(bounceValue, {toValue: 1, friction:4})
                   ]).start()
         }
@@ -140,13 +140,13 @@ export default class Live extends Component {
     },
     button: {
       padding: 10,
-      backgroundColor: purple,
+      backgroundColor: lavender,
       alignSelf: 'center',
       borderRadius: 5,
       margin: 20,
     },
     buttonText: {
-      color: white,
+      color: "lightgrey",
       fontSize: 20,
     },
     directionContainer: {
@@ -158,20 +158,20 @@ export default class Live extends Component {
       textAlign: 'center',
     },
     direction: {
-      color: purple,
+      color: "coral",
       fontSize: 120,
       textAlign: 'center',
     },
     metricContainer: {
       flexDirection: 'row',
       justifyContent: 'space-around',
-      backgroundColor: purple,
+      backgroundColor: lavender,
     },
     metric: {
       flex: 1,
       paddingTop: 15,
       paddingBottom: 15,
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backgroundColor: 'lightblue',
       marginTop: 20,
       marginBottom: 20,
       marginLeft: 10,
