@@ -58,6 +58,10 @@ function UdaciStatusBar ({backgroundColor, ...props}){
   )
 }
 
+const Tab = Platform.OS === 'ios'
+        ? createBottomTabNavigator() 
+        : createMaterialTopTabNavigator()
+        
 // Config for TabNav
 const RouteConfigs = {
   History:{
@@ -92,9 +96,7 @@ const TabNavigatorConfig = {
   }
   };
 
-const Tab = Platform.OS === 'ios'
-        ? createBottomTabNavigator() 
-        : createMaterialTopTabNavigator()
+
 
 const TabNav = () =>(
   <Tab.Navigator {...TabNavigatorConfig}>

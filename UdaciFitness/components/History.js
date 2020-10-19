@@ -9,7 +9,7 @@ import MetricCard from './MetricCard'
 import {AppLoading} from 'expo'
 
 class History extends Component {
-  state = {ready: false}
+  // state = {ready: false}
   
   componentDidMount () {
     const { dispatch } = this.props
@@ -24,7 +24,7 @@ class History extends Component {
           }))
         }
       })
-      .then(() => this.setState(() => ({ready: true})))
+      // .then(() => this.setState(() => ({ready: true})))
   }
   renderItem = ({ today, ...metrics }, formattedDate, key) => (
     <View style={styles.item}>
@@ -35,7 +35,7 @@ class History extends Component {
       ) : (
         <TouchableOpacity
           onPress={() =>
-            this.props.navigation.navigate("EntryDetail", { entryId: dateKey })
+            this.props.navigation.navigate("EntryDetail", { entryId: formattedDate })
           }
         >
           <MetricCard metrics={metrics} />
@@ -53,9 +53,9 @@ class History extends Component {
   }
 
   render() {
-    if (this.state.ready === false) {
-      return <AppLoading />
-    }
+    // if (this.state.ready === false) {
+    //   return <AppLoading />
+    // }
   
     const { entries } = this.props
 
@@ -94,13 +94,15 @@ const styles = StyleSheet.create({
   }
 })
 
-// const mapStateToProps = entries => ({entries})
-// const actions = {receiveEntries, addEntry}
-// export default connect(mapStateToProps, actions)(History)
+
+  // const mapStateToProps = entries => ({ entries })
+  // const actions = { receiveEntries, addEntry }
+  // export default connect(mapStateToProps, actions)(History)
+
 function mapStateToProps(entries){
     
   return{
       entries
   }
 }
-export default connect(null, mapStateToProps)(History)
+export default connect(mapStateToProps)(History)
