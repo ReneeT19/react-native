@@ -48,7 +48,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Constants from 'expo-constants'
 import {createStackNavigator} from '@react-navigation/stack'
 import EntryDetail from "./components/EntryDetail"
-
+import Live from './components/Live' 
 
 function UdaciStatusBar ({backgroundColor, ...props}){
   return (
@@ -73,6 +73,11 @@ const RouteConfigs = {
     component: AddEntry,
     name: "Add Entry",
     options: {tabBarIcon: ({tintColor}) => <FontAwesome name='plus-square' size={30} color={tintColor} />, title: 'Add Entry'}
+  },
+  Live:{
+    component: Live,
+    name: "Live",
+    options: {tabBarIcon: ({tintColor}) => <Ionicons name='ios-speedometer' size={30} color={tintColor} />, title: 'Live'}
   }
 }
 
@@ -102,6 +107,7 @@ const TabNav = () =>(
   <Tab.Navigator {...TabNavigatorConfig}>
       <Tab.Screen {...RouteConfigs['History']} />
       <Tab.Screen {...RouteConfigs['AddEntry']} />
+      <Tab.Screen {...RouteConfigs['Live']} />
   </Tab.Navigator>
 )
 
