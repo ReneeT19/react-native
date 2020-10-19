@@ -6,7 +6,7 @@ import { purple, white } from '../utils/colors'
 export default class Live extends Component{
     state = {
         coords: null,
-        status: 'denied',
+        status: 'granted',
         direction: '',
     }
     askPermission = () => {
@@ -43,11 +43,33 @@ export default class Live extends Component{
                     </View>
             )
         }
+        
         return(
             <View  style={styles.container}>
-                <Text>
-                    {JSON.stringify(this.state)}
-                </Text>
+                <View style={styles.directionContainer}>
+          <Text style={styles.header}>You're heading</Text>
+          <Text style={styles.direction}>
+            North
+          </Text>
+        </View>
+        <View style={styles.metricContainer}>
+          <View style={styles.metric}>
+            <Text style={[styles.header, {color: white}]}>
+              Altitude
+            </Text>
+            <Text style={[styles.subHeader, {color: white}]}>
+              {200} feet
+            </Text>
+          </View>
+          <View style={styles.metric}>
+            <Text style={[styles.header, {color: white}]}>
+              Speed
+            </Text>
+            <Text style={[styles.subHeader, {color: white}]}>
+              {300} MPH
+            </Text>
+          </View>
+        </View>
             </View>
         )
     }
@@ -74,7 +96,40 @@ const styles = StyleSheet.create({
       margin: 20,
     },
     buttonText :{
-      color: white,
+      color: 'white',
       fontSize: 20,
-    }
+    },
+    directionContainer: {
+        flex: 1,
+        justifyContent: 'center',
+      },
+      header: {
+        fontSize: 35,
+        textAlign: 'center',
+      },
+      direction: {
+        color: "coral",
+        fontSize: 120,
+        textAlign: 'center',
+      },
+      metricContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: 'lavender',
+      },
+      metric: {
+        flex: 1,
+        paddingTop: 15,
+        paddingBottom: 15,
+        backgroundColor: 'lightblue',
+        marginTop: 20,
+        marginBottom: 20,
+        marginLeft: 10,
+        marginRight: 10,
+      },
+      subHeader: {
+        fontSize: 25,
+        textAlign: 'center',
+        marginTop: 5,
+      },
   }) 
