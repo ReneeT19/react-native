@@ -171,7 +171,7 @@ export default class Live extends Component {
       flex: 1,
       paddingTop: 15,
       paddingBottom: 15,
-      backgroundColor: 'lightblue',
+      backgroundColor: 'lightpurple',
       marginTop: 20,
       marginBottom: 20,
       marginLeft: 10,
